@@ -20,7 +20,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173", // React dev server
+    origin: "https://todo-application-frontend-x7cb.onrender.com", // React dev server
     credentials: true,
   })
 );
