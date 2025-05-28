@@ -37,14 +37,14 @@ const userController = {
     return res
       .cookie("token", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "None",
       })
       .json({ message: "Login successful" });
   },
 
   userProfile: async (req, res, User) => {
-    const token = req.cookies.token;
+    const token =  req.cookies.token || req.headers["authorization"]?.split(" ")[1] || "";
     if (!token) return res.status(401).json({ error: "Not authenticated" });
 
     try {
